@@ -26,6 +26,12 @@ Route::get('cotizaciones/editar/{cotizacion}', [CotizacionController::class, 'ed
 Route::put('cotizaciones/{cotizacion}', [CotizacionController::class, 'actualizarCotizacion'])->name('actualizarCotizacion'); 
 Route::delete('cotizaciones/{cotizacion}', [CotizacionController::class, 'eliminarCotizacion'])->name('eliminarCotizacion');
 
+
+Route::get('/showCotizacionesJSON', [CotizacionController::class, 'showCotizacionesJSON'])
+     ->name('showCotizacionesJSON');
+
+
+
 /*********************************************/
 /* PEDIDOS ***********************************/
 /*********************************************/

@@ -19,6 +19,32 @@ class Cotizacion extends Model
     public $timestamps = false; // Deshabilitar timestamping
 
 
-   
+
+
+
+
+    /////////////////////////////////
+
+    // Relación con cliente
+    public function cliente()
+    {
+        return $this->belongsTo(Cliente::class, 'cliente_id');
+    }
+
     
+
+    // Método para replicar tu SQL
+    public static function getCotizaciones()
+    {
+        return self::select(
+            'cabcotizacion.*',
+
+          
+            'cliente.descripcion as nombre_cliente'
+            
+        )
+            ->join('cliente', 'cliente.id', '=', 'cabcotizacion.cliente_id')
+            ->where('estado_id', 1)
+            ->get();
+    }
 }

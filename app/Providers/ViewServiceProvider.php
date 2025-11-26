@@ -4,10 +4,9 @@ namespace App\Providers;
 
 use App\Http\View\Composers\JsByControllerComposer;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 
-class AppServiceProvider extends ServiceProvider
+class ViewServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
@@ -22,11 +21,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Route::resourceVerbs([
-            'create' => 'crear',
-            'edit' => 'editar',
-        ]);
-
         // Aplica el composer a todas las views
         View::composer('*', JsByControllerComposer::class);
     }

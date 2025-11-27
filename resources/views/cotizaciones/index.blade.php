@@ -15,6 +15,44 @@
             <br>
             <br>
             <div class="table-responsive">
+
+
+
+                <h2>con json</h2>
+                <table class="table table-light">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Fecha</th>
+                            <th>Cliente</th>
+                            <th>Total</th>
+                            <th>Estado</th>
+                            <th>Realizado por</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="cotizacion in listaCotizaciones" :key="cotizacion.id">
+                            <td>@{{ cotizacion.id }}</td>
+                            <td>@{{ cotizacion.fecha }}</td>
+                            <td>@{{ cotizacion.nombre_cliente }}</td>
+                            <td>@{{ cotizacion.total }}</td>
+                            <td>@{{ cotizacion.estado_id }}</td>
+                            <td>Vendedor</td>
+                            <td>
+                                <a :href="'cotizaciones/editar/' + cotizacion.id" class="btn btn-warning mr-3" target="_blank">Editar</a>
+
+                                <a class="btn btn-danger">Eliminar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+
+
+
+                <h1>con php blade</h1>
                 <table class="table table-light">
                     <thead>
                         <tr>
@@ -54,39 +92,6 @@
                     </tbody>
                 </table>
 
-                
-                <h2>con json</h2>
-                <table class="table table-light">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Fecha</th>
-                            <th>Cliente</th>
-                            <th>Total</th>
-                            <th>Estado</th>
-                            <th>Realizado por</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="cotizacion in listaCotizaciones" :key="cotizacion.id">
-                            <td>@{{ cotizacion.id }}</td>
-                            <td>@{{ cotizacion.fecha }}</td>
-                            <td>@{{ cotizacion.nombre_cliente }}</td>
-                            <td>@{{ cotizacion.total }}</td>
-                            <td>@{{ cotizacion.estado_id }}</td>
-                            <td>Vendedor</td>
-                            <td>
-                                {{-- <a :href="`/cotizaciones/editar/${cotizacion.id}`" class="btn btn-warning mr-3">Editar</a>
-
-                <button @click="eliminarCotizacion(cotizacion.id)" class="btn btn-danger">
-                    Eliminar
-                </button> --}}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
             </div>
         </div>
 
@@ -109,7 +114,7 @@
             baseUrl: "{{ url('/') }}"
         };
 
-        window.moduloActivo = "{{ $moduloActivo }}"; // "index", "crear", "editar", etc.
+        window.moduloActivo = "{{ $moduloActivo }}"; // "index", "crear", "editar"
     </script>
 
 

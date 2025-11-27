@@ -27,8 +27,7 @@ Route::put('cotizaciones/{cotizacion}', [CotizacionController::class, 'actualiza
 Route::delete('cotizaciones/{cotizacion}', [CotizacionController::class, 'eliminarCotizacion'])->name('eliminarCotizacion');
 
 
-Route::get('/showCotizacionesJSON', [CotizacionController::class, 'showCotizacionesJSON'])
-     ->name('showCotizacionesJSON');
+Route::get('showCotizacionesJSON', [CotizacionController::class, 'showCotizacionesJSON'])->name('showCotizacionesJSON');
 
 
 

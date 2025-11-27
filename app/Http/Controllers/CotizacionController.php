@@ -9,20 +9,39 @@ use Illuminate\Support\Str;
 
 class CotizacionController extends Controller
 {
-    public function showCotizacionesJSON()
+    /*public function showCotizacionesJSON()
     {
-        //$data = Cotizacion::where('estado_id', 1);
         $data = Cotizacion::getCotizaciones();
-
-
         if ($data->isNotEmpty()) {
-            return response()->json($data);
+            return response()->json([
+                'data' => $data,
+                'message' => 'Cotizaciones cargadas correctamente'
+            ]);
         } else {
             return response()->json([
-                'error' => 'La o las contactos del cliente no existen'
+                'message' => 'No se encontraron cotizaciones'
             ], 404);
         }
+    }*/
+    public function showCotizacionesJSON()
+    {
+         $data = Cotizacion::getCotizaciones()->paginate(4);
+
+    return response()->json([
+        'data' => $data->items(),
+        'pagination' => [
+            'total' => $data->total(),
+            'per_page' => $data->perPage(),
+            'current_page' => $data->currentPage(),
+            'last_page' => $data->lastPage(),
+            'next_page_url' => $data->nextPageUrl(),
+            'prev_page_url' => $data->previousPageUrl(),
+        ],
+        'message' => 'Cotizaciones cargadas correctamente'
+    ]);
     }
+
+
     //*************************************************************************/ 
     public function index()
     {
@@ -113,45 +132,4 @@ class CotizacionController extends Controller
         $cotizacion->delete();
         return redirect()->route('cotizaciones.index');
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
 }

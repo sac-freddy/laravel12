@@ -17,12 +17,7 @@ const appCotizacion = Vue.createApp({
 
             cotizacion: {},
             detalles: [],
-            nameModulo: {
-                index: 0,
-                crear: 0,
-                editar: 0,
-                detalle: 0,
-            },
+
             cotizacion: {
                 id: ''
             },
@@ -56,14 +51,61 @@ const appCotizacion = Vue.createApp({
             }
         },
 
-        async readCotizaciones() {
+        async readCotizaciones(page = 1) {
             try {
-                const { data } = await axios.get(`${window.Laravel.baseUrl}/showCotizacionesJSON`)
-                this.listaCotizaciones = data;
+                const response = await axios.get(`${window.Laravel.baseUrl}/showCotizacionesJSON?page=${page}`);
+
+                console.log("response", response);
+
+                this.listaCotizaciones = response.data.data;
+                this.pagination = response.data.pagination;
+
+                /*Swal.fire({
+                    title: "Éxito",
+                    text: response.data.message,
+                    icon: "success"
+                });*/
+
             } catch (error) {
                 console.error(error);
+                Swal.fire({
+                    title: "Error",
+                    text: "Hubo un problema al cargar las cotizaciones",
+                    icon: "error"
+                });
             }
-        }
+        },
+
+
+        /*async readCotizaciones() {
+            try {
+                const response = await axios.get(`${window.Laravel.baseUrl}/showCotizacionesJSON`);
+                console.log('el response es = ',response);
+                this.listaCotizaciones = response.data.data;
+                messageFromServer = response.data;
+
+                Swal.fire({
+                    title: "Éxito",
+                    text: messageFromServer.message,
+                    icon: "success"
+                });
+
+
+            } catch (error) {
+                if (error.response) {
+                    console.error("Error del servidor:", error.response.data);
+
+                    Swal.fire({
+                        title: "Error",
+                        text: error.response.data.message || "Ocurrió un error desconocido",
+                        icon: "error"
+                    });
+                }
+
+            }
+        }*/
+
+
 
     },
 

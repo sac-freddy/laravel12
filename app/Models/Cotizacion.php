@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Cotizacion extends Model
 {
@@ -18,11 +19,6 @@ class Cotizacion extends Model
 
     public $timestamps = false; // Deshabilitar timestamping
 
-
-
-
-
-
     /////////////////////////////////
 
     // Relación con cliente
@@ -31,20 +27,27 @@ class Cotizacion extends Model
         return $this->belongsTo(Cliente::class, 'cliente_id');
     }
 
-    
+
 
     // Método para replicar tu SQL
     public static function getCotizaciones()
     {
-        return self::select(
+        /*$resultado = self::select(
             'cabcotizacion.*',
-
-          
-            'cliente.descripcion as nombre_cliente'
-            
+            'cliente.descripcion AS nombre_cliente'
         )
             ->join('cliente', 'cliente.id', '=', 'cabcotizacion.cliente_id')
-            ->where('estado_id', 1)
-            ->get();
+            //->where('cliente_id', 29)
+            ->orderBy('cabcotizacion.id', 'desc')
+            ->get();*/
+
+        $resultado = self::select(
+            'cabcotizacion.*',
+            'cliente.descripcion AS nombre_cliente'
+        )
+            ->join('cliente', 'cliente.id', '=', 'cabcotizacion.cliente_id')
+            ->orderBy('cabcotizacion.id', 'DESC');
+
+        return $resultado;
     }
 }

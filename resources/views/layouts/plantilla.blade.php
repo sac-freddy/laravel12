@@ -46,6 +46,9 @@
     <!-- Axios -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- Scripts específicos de la página -->
     @if (!empty($vueJsFile))
         <script src="{{ asset($vueJsFile) }}"></script>

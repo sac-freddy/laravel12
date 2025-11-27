@@ -3,6 +3,13 @@ const globalMixin = {
     data() {
         return {
             holafreddy: 'como estas freddy',
+            nameModulo: {
+                index: 0,
+                crear: 0,
+                editar: 0,
+                detalle: 0,
+            },
+            
             permisosUsuario: {
                 menu_id: 0,
                 usuario_id: 0,

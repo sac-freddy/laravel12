@@ -36,7 +36,7 @@ body {
 div:where(.swal2-container).swal2-center>.swal2-popup {
     border-radius: 10px;
     width: 32em;
-    font-size: 2rem;
+    font-size: 1.2rem;
 }
 
 

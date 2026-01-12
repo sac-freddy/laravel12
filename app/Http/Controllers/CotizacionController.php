@@ -25,20 +25,20 @@ class CotizacionController extends Controller
     }*/
     public function showCotizacionesJSON()
     {
-         $data = Cotizacion::getCotizaciones()->paginate(4);
+        $data = Cotizacion::getCotizaciones()->paginate(4);
 
-    return response()->json([
-        'data' => $data->items(),
-        'pagination' => [
-            'total' => $data->total(),
-            'per_page' => $data->perPage(),
-            'current_page' => $data->currentPage(),
-            'last_page' => $data->lastPage(),
-            'next_page_url' => $data->nextPageUrl(),
-            'prev_page_url' => $data->previousPageUrl(),
-        ],
-        'message' => 'Cotizaciones cargadas correctamente'
-    ]);
+        return response()->json([
+            'data' => $data->items(),
+            'pagination' => [
+                'total' => $data->total(),
+                'per_page' => $data->perPage(),
+                'current_page' => $data->currentPage(),
+                'last_page' => $data->lastPage(),
+                'next_page_url' => $data->nextPageUrl(),
+                'prev_page_url' => $data->previousPageUrl(),
+            ],
+            'message' => 'Cotizaciones cargadas correctamente'
+        ]);
     }
 
 

@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\ArticuloController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CotizacionController;
@@ -41,3 +41,13 @@ Route::get('showCotizacionesJSON', [CotizacionController::class, 'showCotizacion
 /*********************************************/
 
 
+
+
+
+
+
+/*********************************************/
+/* ARTICULOS ******************************/
+/*********************************************/
+Route::get('articulos', [ArticuloController::class, 'index'])->name('listarArticulos');
+Route::get('showArticulosJSON', [ArticuloController::class, 'showArticulosJSON'])->name('showArticulosJSON');

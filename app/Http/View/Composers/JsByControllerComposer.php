@@ -33,6 +33,10 @@ class JsByControllerComposer
             $jsFile = 'js/util/vueClientes.js';
         }
 
+        if ($controller === 'ArticuloController') {
+            $jsFile = 'js/util/vueArticulo.js';
+        }
+
         // se envía a TODAS las vistas
         $view->with('vueJsFile', $jsFile);
     }

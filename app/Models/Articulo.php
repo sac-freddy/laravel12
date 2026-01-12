@@ -9,7 +9,7 @@ use function Laravel\Prompts\table;
 class Articulo extends Model
 {
     protected $table = 'articulo';
-
+//hola
 
 
     public static function getArticulos()
